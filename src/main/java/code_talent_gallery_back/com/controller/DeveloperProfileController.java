@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
+@CrossOrigin
 @RequestMapping("/api/developer-profiles")
 public class DeveloperProfileController {
 

@@ -1,5 +1,6 @@
 package code_talent_gallery_back.com.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,5 +19,6 @@ public class Skill {
     private String name;
 
     @ManyToMany(mappedBy = "skills")
+    @JsonIgnore
     private Set<DeveloperProfile> developerProfiles;
 }
