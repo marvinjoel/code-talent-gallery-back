@@ -35,4 +35,10 @@ public class DeveloperProfileController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping
+    public ResponseEntity<?> createDeveloperProfile(@RequestBody DeveloperProfile newProfile){
+        developerProfileService.createProfile(newProfile);
+        return ResponseEntity.ok("Datos de usurio creado");
+    }
 }

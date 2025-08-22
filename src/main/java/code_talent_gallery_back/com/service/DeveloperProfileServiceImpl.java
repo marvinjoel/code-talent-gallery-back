@@ -25,6 +25,15 @@ public class DeveloperProfileServiceImpl implements DeveloperProfileService{
     }
 
     @Override
+    public DeveloperProfile createProfile(DeveloperProfile newProfile){
+        if (newProfile.getUser() == null || newProfile.getUser().getId() == null){
+            throw new RuntimeException("User ID es requerido para crear el perfil");
+        }
+        newProfile.setUpdatedAt(new java.sql.Timestamp(System.currentTimeMillis()));
+        return developerProfileRepository.save(newProfile);
+    }
+
+    @Override
     public DeveloperProfile updateProfile(Long id, DeveloperProfile updatedProfile) {
         return developerProfileRepository.findById(id)
                 .map(profile -> {

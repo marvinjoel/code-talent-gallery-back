@@ -9,4 +9,5 @@ public interface DeveloperProfileService {
     List<DeveloperProfile> findAllProfile();
     Optional<DeveloperProfile> findById(Long id);
     DeveloperProfile updateProfile(Long id, DeveloperProfile updatedProfile);
+    DeveloperProfile createProfile(DeveloperProfile newProfile);
 }
