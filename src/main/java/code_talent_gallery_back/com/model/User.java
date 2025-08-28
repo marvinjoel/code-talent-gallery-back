@@ -1,5 +1,7 @@
 package code_talent_gallery_back.com.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -26,5 +28,6 @@ public class User {
     private Timestamp createAt;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private DeveloperProfile developerProfile;
 }

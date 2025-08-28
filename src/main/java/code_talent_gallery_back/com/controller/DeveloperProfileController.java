@@ -41,14 +41,14 @@ public class DeveloperProfileController {
 
     @PostMapping
     public ResponseEntity<?> createDeveloperProfile(@RequestBody DeveloperProfile newProfile){
-        developerProfileService.createProfile(newProfile);
-        return ResponseEntity.ok("Datos de usurio creado");
+        DeveloperProfile createProfile = developerProfileService.createProfile(newProfile);
+        return ResponseEntity.ok(createProfile);
     }
 
     @PostMapping("/{id}/upload-photo")
     public ResponseEntity<?> uploadProfilePhoto(@PathVariable Long id, @RequestParam("file")MultipartFile file){
         String imageUrl = cloudinaryService.uploadFile(file);
         DeveloperProfile updateProfile = developerProfileService.updateProfilePicture(id, imageUrl);
-        return ResponseEntity.ok("Datos de usurio creado");
+        return ResponseEntity.ok(updateProfile);
     }
 }
