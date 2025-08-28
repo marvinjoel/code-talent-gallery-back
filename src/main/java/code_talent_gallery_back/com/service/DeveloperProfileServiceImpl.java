@@ -53,4 +53,16 @@ public class DeveloperProfileServiceImpl implements DeveloperProfileService{
                 })
                 .orElseThrow(() -> new RuntimeException("Developer profile not found with id: " + id));
     }
+
+    @Override
+    public DeveloperProfile updateProfilePicture(Long id, String imageUrl) {
+        return developerProfileRepository.findById(id)
+                .map(profile -> {
+                    profile.setProfilePictureUrl(imageUrl);
+                    profile.setUpdatedAt(new java.sql.Timestamp(System.currentTimeMillis()));
+                    return developerProfileRepository.save(profile);
+                })
+                .orElseThrow(() -> new RuntimeException("Perfil no encontrado con id: " + id));
+    }
+
 }
