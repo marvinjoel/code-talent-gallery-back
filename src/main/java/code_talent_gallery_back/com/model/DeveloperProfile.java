@@ -56,11 +56,12 @@ public class DeveloperProfile {
 
     private Timestamp updatedAt;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "developer_skills",
             joinColumns = @JoinColumn(name = "developer_id"),
             inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
+    @JsonManagedReference
     private Set<Skill> skills;
 }
