@@ -1,6 +1,7 @@
 package code_talent_gallery_back.com.service;
 
 import code_talent_gallery_back.com.DTO.DeveloperProfileDTO;
+import code_talent_gallery_back.com.exception.ResourceNotFoundException;
 import code_talent_gallery_back.com.mapper.DeveloperProfileMapper;
 import code_talent_gallery_back.com.model.DeveloperProfile;
 import code_talent_gallery_back.com.repository.DeveloperProfileRepository;
@@ -45,7 +46,7 @@ public class DeveloperProfileServiceImpl implements DeveloperProfileService{
     @Override
     public DeveloperProfileDTO updateProfilePicture(Long id, String imageUrl) {
         DeveloperProfile profile = developerProfileRepository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Profile not found."));
+                .orElseThrow(()-> new ResourceNotFoundException("No se encontró el perfil con id = " + id));
         profile.setProfilePictureUrl(imageUrl);
         DeveloperProfile saved = developerProfileRepository.save(profile);
         return DeveloperProfileMapper.toDTO(saved);
