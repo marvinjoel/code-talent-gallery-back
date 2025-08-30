@@ -9,7 +9,6 @@ import java.util.Optional;
 public interface DeveloperProfileService {
     List<DeveloperProfileDTO> findAllProfile();
     Optional<DeveloperProfileDTO> findById(Long id);
-    DeveloperProfile updateProfile(Long id, DeveloperProfile updatedProfile);
-    DeveloperProfile createProfile(DeveloperProfile newProfile);
-    DeveloperProfile updateProfilePicture(Long id, String imageUrl);
+    DeveloperProfileDTO createProfile(DeveloperProfileDTO newProfileDTO);
+    DeveloperProfileDTO updateProfilePicture(Long id, String imageUrl);
 }

@@ -1,5 +1,7 @@
 package code_talent_gallery_back.com.controller;
 
+import code_talent_gallery_back.com.DTO.DeveloperProfileDTO;
+import code_talent_gallery_back.com.mapper.DeveloperProfileMapper;
 import code_talent_gallery_back.com.model.DeveloperProfile;
 import code_talent_gallery_back.com.service.CloudinaryService;
 import code_talent_gallery_back.com.service.DeveloperProfileService;
@@ -29,26 +31,16 @@ public class DeveloperProfileController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateDeveloperProfile(@PathVariable Long id, @RequestBody DeveloperProfile updateProfile){
-        try{
-            DeveloperProfile saveProfile = developerProfileService.updateProfile(id, updateProfile);
-            return ResponseEntity.ok(saveProfile);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
     @PostMapping
-    public ResponseEntity<?> createDeveloperProfile(@RequestBody DeveloperProfile newProfile){
-        DeveloperProfile createProfile = developerProfileService.createProfile(newProfile);
-        return ResponseEntity.ok(createProfile);
+    public ResponseEntity<?> createDeveloperProfile(@RequestBody DeveloperProfileDTO dto){
+        DeveloperProfileDTO createdProfile = developerProfileService.createProfile(dto);
+        return ResponseEntity.ok(createdProfile);
     }
 
     @PostMapping("/{id}/upload-photo")
     public ResponseEntity<?> uploadProfilePhoto(@PathVariable Long id, @RequestParam("file")MultipartFile file){
         String imageUrl = cloudinaryService.uploadFile(file);
-        DeveloperProfile updateProfile = developerProfileService.updateProfilePicture(id, imageUrl);
+        DeveloperProfileDTO updateProfile = developerProfileService.updateProfilePicture(id, imageUrl);
         return ResponseEntity.ok(updateProfile);
     }
 }
