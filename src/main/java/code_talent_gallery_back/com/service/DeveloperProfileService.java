@@ -11,4 +11,6 @@ public interface DeveloperProfileService {
     Optional<DeveloperProfileDTO> findById(Long id);
     DeveloperProfileDTO createProfile(DeveloperProfileDTO newProfileDTO);
     DeveloperProfileDTO updateProfilePicture(Long id, String imageUrl);
+
+    DeveloperProfileDTO updateProfile(Long id, DeveloperProfileDTO updateDTO);
 }

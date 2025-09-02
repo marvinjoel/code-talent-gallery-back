@@ -43,4 +43,10 @@ public class DeveloperProfileController {
         DeveloperProfileDTO updateProfile = developerProfileService.updateProfilePicture(id, imageUrl);
         return ResponseEntity.ok(updateProfile);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<DeveloperProfileDTO> updateDeveloperProfile(@PathVariable Long id,@RequestBody DeveloperProfileDTO dto){
+        DeveloperProfileDTO updatedProfile = developerProfileService.updateProfile(id, dto);
+        return ResponseEntity.ok(updatedProfile);
+    }
 }
