@@ -1,8 +1,6 @@
 package code_talent_gallery_back.com.controller;
 
 import code_talent_gallery_back.com.DTO.DeveloperProfileDTO;
-import code_talent_gallery_back.com.mapper.DeveloperProfileMapper;
-import code_talent_gallery_back.com.model.DeveloperProfile;
 import code_talent_gallery_back.com.service.CloudinaryService;
 import code_talent_gallery_back.com.service.DeveloperProfileService;
 import lombok.RequiredArgsConstructor;

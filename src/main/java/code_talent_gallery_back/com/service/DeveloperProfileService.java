@@ -1,7 +1,6 @@
 package code_talent_gallery_back.com.service;
 
 import code_talent_gallery_back.com.DTO.DeveloperProfileDTO;
-import code_talent_gallery_back.com.model.DeveloperProfile;
 
 import java.util.List;
 import java.util.Optional;
