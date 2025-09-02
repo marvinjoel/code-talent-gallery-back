@@ -9,10 +9,11 @@ import code_talent_gallery_back.com.model.DeveloperProfile;
 import code_talent_gallery_back.com.model.Skill;
 import code_talent_gallery_back.com.repository.DeveloperProfileRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -23,10 +24,9 @@ public class DeveloperProfileServiceImpl implements DeveloperProfileService{
     private final DeveloperProfileRepository developerProfileRepository;
 
     @Override
-    public List<DeveloperProfileDTO> findAllProfile(){
-        return developerProfileRepository.findAll().stream()
-                .map(DeveloperProfileMapper::toDTO)
-                .collect(Collectors.toList());
+    public Page<DeveloperProfileDTO> findAllProfile(Pageable pageable) {
+        return developerProfileRepository.findAll(pageable)
+                .map(DeveloperProfileMapper::toDTO);
     }
 
     @Override
